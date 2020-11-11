@@ -6,6 +6,13 @@ on:
       - main
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo SHA
+        run: echo ${{ github.sha }}
+
   build:
     runs-on: ubuntu-latest
 
