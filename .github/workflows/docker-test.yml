@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Get short ref
+        id: ref
+        run: echo "::set-output name=shortref::$(basename ${GITHUB_REF})"
+
       - name: Setup repo
         uses: actions/checkout@v2
 
@@ -37,7 +41,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: baetheus/docker-action-test:commit-${{ github.sha }}
+          tags: baetheus/docker-action-test:commit-${{ steps.ref.outputs.shortref }}-${{ github.sha }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
