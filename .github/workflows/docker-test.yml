@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Echo SHA
-        run: echo ${{ github.sha }}
+      - name: Echo Shell
+        run: echo $0
 
   build:
     runs-on: ubuntu-latest
